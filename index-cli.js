@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+console.log('Running check-translations...');
+
 const check = require('./index');
 
 const path = process.argv[2];
