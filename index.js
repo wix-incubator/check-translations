@@ -3,11 +3,11 @@ const fs = require('fs');
 
 module.exports = check;
 
-function check(translationsPath) {
+function check(translationsPath, ignoreKeys = []) {
   const files = fs.readdirSync(translationsPath);
   const enFile = files.find(name => name.endsWith('_en.json'));
 
-  const content = readFiles(files.map(file => path.join(translationsPath, file)));
+  const content = readFiles(files.map(file => path.join(translationsPath, file)), ignoreKeys);
   const en = content[enFile];
 
   const messages = [];
@@ -41,15 +41,16 @@ function check(translationsPath) {
   return messages;
 }
 
-function readFiles(files) {
-  return files.reduce((acc, curr) => ({...acc, [path.basename(curr)]: read(curr)}), {});
+function readFiles(files, ignoreKeys) {
+  return files.reduce((acc, curr) => ({...acc, [path.basename(curr)]: read(curr, ignoreKeys)}), {});
 }
 
-function read(file) {
+function read(file, ignoreKeys) {
   const json = JSON.parse(fs.readFileSync(file, { encoding: 'UTF8' }));
   return Object.keys(json).reduce((acc, curr) => {
     return Object.assign(acc, {
-      [curr]: (json[curr].match(/{{[^{}]*}}/g) || []).sort().join(', ')
+      [curr]: (json[curr].match(/{{[^{}]*}}/g) || [])
+        .filter(key => !ignoreKeys.includes(key)).sort().join(', ')
     });
   }, {});
 }

@@ -2,14 +2,18 @@
 
 const check = require('./index');
 
-const result = check(process.argv[2]);
+const path = process.argv[2];
+const ignoreKeys = process.argv[3] ? process.argv[3].split(',') : [];
+
+const result = check(path, ignoreKeys);
+
 const warnings = result.filter(_ => _.type === 'WARNING');
 const errors = result.filter(_ => _.type === 'ERROR');
 
 warnings.forEach(warning => {
-  console.warn([
+  console.warn(
     `${warning.type}: ${warning.code}, ${warning.file}, ${warning.translation.key}.`
-  ]);
+  );
 });
 
 errors.forEach(error => {
