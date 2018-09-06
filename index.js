@@ -46,7 +46,7 @@ function readFiles(files) {
 }
 
 function read(file) {
-  const json = require(file);
+  const json = JSON.parse(fs.readFileSync(file, { encoding: 'UTF8' }));
   return Object.keys(json).reduce((acc, curr) => {
     return Object.assign(acc, {
       [curr]: (json[curr].match(/{{[^{}]*}}/g) || []).sort().join(', ')
