@@ -1,0 +1,26 @@
+{
+  "name": "check-translations",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Mantas Miliukas",
+    "email": "mantasm@wix.com"
+  },
+  "main": "./index.js",
+  "bin": {
+    "check-translations": "./index-cli.js"
+  },
+  "files": [
+    "index.js",
+    "index-cli.js"
+  ],
+  "publishConfig": {
+    "registry": "http://npm.dev.wixpress.com/"
+  },
+  "scripts": {
+    "test": ":",
+    "release": ":"
+  },
+  "devDependencies": {
+  }
+}
