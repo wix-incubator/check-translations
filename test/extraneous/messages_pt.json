@@ -1,0 +1,4 @@
+{
+  "one": "Hello {{name}}!",
+  "two": "Hello {{name}}!"
+}
