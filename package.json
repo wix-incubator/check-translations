@@ -18,7 +18,6 @@
     "registry": "http://npm.dev.wixpress.com/"
   },
   "scripts": {
-    "preinstall": "node ./check-fix.js",
     "start": "npm run test -- --watch",
     "test": "mocha test/**/*.spec.js",
     "release": ":"
