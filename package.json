@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.2.0",
-    "non-existing-unique-package-should-fail": "100.0.110"
+    "mocha": "^5.2.0"
   }
 }
