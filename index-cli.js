@@ -3,6 +3,7 @@
 console.log('Running check-translations...');
 
 const check = require('./index');
+const checkMissingTranslations = require('./index-missing-translations');
 
 const path = process.argv[2];
 const ignoreKeys = process.argv[3] ? process.argv[3].split(',') : [];
@@ -29,3 +30,7 @@ errors.forEach(error => {
 if (errors.length) {
   process.exit(1);
 }
+
+const missingTranslations = checkMissingTranslations(path);
+console.log('Missing translations');
+console.log(JSON.stringify(missingTranslations, null, 2));

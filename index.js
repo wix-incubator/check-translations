@@ -1,41 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 
+const { getFileNames } = require('./index-utils');
+
 module.exports = check;
 
-const supportedLocales = [
-  'en',
-  'zh',
-  'cs',
-  'da',
-  'nl',
-  'fr',
-  'de',
-  'hi',
-  'it',
-  'ja',
-  'ko',
-  'no',
-  'pl',
-  'pt',
-  'ru',
-  'es',
-  'sv',
-  'th',
-  'tr',
-  'uk',
-  'vi',
-];
-
 function check(translationsPath, ignoreKeys) {
-  const files = fs
-    .readdirSync(translationsPath)
-    .filter(file => {
-      return supportedLocales.some(locale => {
-        return file.endsWith(`_${locale}.json`);
-      });
-    });
-
+  const files = getFileNames(translationsPath);
   const enFile = files.find(name => name.endsWith('_en.json'));
 
   const content = readFiles(files.map(file => path.join(translationsPath, file)), ignoreKeys);

@@ -1,6 +1,6 @@
 {
   "name": "@wix/check-translations",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "UNLICENSED",
   "author": {
     "name": "Mantas Miliukas",
@@ -12,7 +12,9 @@
   },
   "files": [
     "index.js",
-    "index-cli.js"
+    "index-cli.js",
+    "index-utils.js",
+    "index-missing-translations.js"
   ],
   "publishConfig": {
     "registry": "http://npm.dev.wixpress.com/"
