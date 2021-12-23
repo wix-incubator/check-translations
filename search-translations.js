@@ -1,4 +1,3 @@
-//requiring path and fs modules
 const path = require('path');
 const fs = require('fs');
 
